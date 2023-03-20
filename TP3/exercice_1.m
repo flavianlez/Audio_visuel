@@ -68,29 +68,29 @@ for i = 1:nb_lignes
 		U(i,j) = U(i,j)+beta*regularisation(k_voisins,k(i,j),k(i,j));
     end
 end
-% 
-% % Minimisation de l'energie par recuit simule :
-% temps_affichage = 0.05;
-% T = T_0;
-% for q = 1:q_max
-% 
-% 	[U,k] = recuit(U,k,AD,T,beta);
-% 
-% 	% Mise a jour de l'affichage :
-% 	for i = 1:nb_lignes
-% 		for j = 1:nb_colonnes
-% 			couleurs_pixels(i,j,:) = couleurs_classes(k(i,j),:);
-% 		end
-% 	end
-% 	imagesc(couleurs_pixels);
-% 	axis equal;
-% 	axis off;
-% 	title(['Recuit simule : iteration ' num2str(q) '/' num2str(q_max)],'FontSize',20);
-% 	pause(temps_affichage);
-% 
-% 	% Mise a jour de la temperature :
-% 	T = alpha*T;
-% end
+
+% Minimisation de l'energie par recuit simule :
+temps_affichage = 0.05;
+T = T_0;
+for q = 1:q_max
+
+	[U,k] = recuit(U,k,AD,T,beta);
+
+	% Mise a jour de l'affichage :
+	for i = 1:nb_lignes
+		for j = 1:nb_colonnes
+			couleurs_pixels(i,j,:) = couleurs_classes(k(i,j),:);
+		end
+	end
+	imagesc(couleurs_pixels);
+	axis equal;
+	axis off;
+	title(['Recuit simule : iteration ' num2str(q) '/' num2str(q_max)],'FontSize',20);
+	pause(temps_affichage);
+
+	% Mise a jour de la temperature :
+	T = alpha*T;
+end
 
 % Calcul du pourcentage de pixels correctement classes :
 pixels_correctement_classes = find(k==k_VT);
