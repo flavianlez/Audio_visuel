@@ -1,0 +1,14 @@
+function f = retroprojection(sinogramme,theta,nb_rayons,nb_lignes,nb_colonnes)
+    f = zeros(nb_lignes,nb_colonnes);
+    ntheta = length(theta);
+   
+    for o = 1:ntheta
+        for i = 1:nb_lignes
+            for j= 1:nb_colonnes
+                t = round(i * cos(deg2rad(theta(o))) + j * sin(deg2rad(o)));
+                t = milieu  + t;
+                f(i,j) = f(i,j) + sinogramme(t,o);
+            end
+        end
+    end
+end

@@ -1,0 +1,11 @@
+function filtre = filtrage_sinogramme(sinogramme)
+    
+    [Nl,nc] = size(sinogramme);
+    sinogramme_TF = fft(sinogramme);
+    filtre  = abs(fftfreq(Nl));
+
+    filtre = sinogramme_dft .* filtre;
+
+    sinogramme_filtre
+ 
+end
