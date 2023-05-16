@@ -1,0 +1,12 @@
+function paires = appariement(pics_t, pics_f, n_v, delta_t, delta_f)
+    for i = 1:length(pics_t)
+        pic_1t = pics_t(i);
+        pic_1f = pics_f(i);
+        matrice_find = abs(pics_f - pic_1f) <= delta_f;
+        matrice_find = matrice_find .* (pics_t - pic_1t > 0) .* (pics_t - pic_1t <= delta_t);
+        proches = find(matrice_find, n_v);
+        for j = 1:n_v
+            
+        end
+    end
+end
